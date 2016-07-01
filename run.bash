@@ -7,24 +7,24 @@
 set -eu
 
 release=""
-codename=""
-host_ip=""
-private_ip=""
-host_name=""
+codename="digidesk"
+host_ip="158.85.207.38"
+private_ip="10.122.214.74"
+host_name="control.digidesk.org"
 set_interface=""
-is_debug=""
+is_debug="False"
 docker_node=""
 set_interface=""
 install_func=install_all
 pool="theonepool"
-mongohost="127.0.0.1"
+mongohost="158.85.207.38"
 mongoport="27017"
-dockerhost="127.0.0.1"
+dockerhost="158.85.207.38"
 dockerport="2375"
 registryhost=""
 registryport="5000"
-adminuser="admin@example.com"
-adminpassword="admin123"
+adminuser="admin@digidesk.org"
+adminpassword="Password00"
 install_tsuru_source=0
 tsuru_ppa_source="stable"
 install_archive_server=1
@@ -45,7 +45,7 @@ declare -A DISTMAP=(
 )
 
 TSURU_CONF=$(cat <<EOF
-listen: "0.0.0.0:8080"
+listen: "158.85.207.38:8080"
 host: http://{{{HOST_IP}}}:8080
 debug: true
 admin-team: admin
@@ -56,7 +56,7 @@ database:
 
 git:
   unit-repo: /home/application/current
-  api-server: http://127.0.0.1:8000
+  api-server: http://158.85.207.38:8000
 
 auth:
   user-registration: true
@@ -65,14 +65,14 @@ routers:
   hipache:
     type: hipache
     domain: {{{HOST_NAME}}}
-    redis-server: 127.0.0.1:6379
+    redis-server: 158.85.207.38:6379
 repo-manager: gandalf
 provisioner: docker
 queue:
   mongo-url: {{{MONGO_HOST}}}:{{{MONGO_PORT}}}
   mongo-database: tsuru_queue
 pubsub:
-  redis-host: 127.0.0.1
+  redis-host: 158.85.207.38
   redis-port: 6379
 docker:
   bs:
